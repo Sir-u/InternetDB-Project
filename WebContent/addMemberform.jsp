@@ -36,8 +36,8 @@
 	<form action="addMember.jsp" method = "post">
 	<table>
 		<tr>
-		<td> 아이디 </td>
-		<td> <input type = "text" name = "userid" size = "20"> </td>
+		<td> 학번 </td>
+		<td> <input type = "number" name = "stdnum" size = "20"> </td>
 		</tr>
 		
 		<tr>
@@ -66,11 +66,6 @@
         </tr>
 		
 		<tr>
-		<td> 학번 </td>
-		<td> <input type = "number" name = "stdnum" size = "20"> </td>
-		</tr>
-		
-		<tr>
 		<td> 나이 </td>
 		<td> <input type = "number" name = "age" size = "20"> </td>
 		</tr>
@@ -89,6 +84,8 @@
 	</table>
 	
 	</form>
+	
+<a href="home.jsp">홈으로</a>
 
 </body>
 </html>

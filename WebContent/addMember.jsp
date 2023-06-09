@@ -4,9 +4,16 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
+<%@ page import="com.web_project.member.MemberBean" %>
+<%@ page import="com.web_project.member.MemberDAO" %>
 
-<jsp:useBean id = "member" class = "com.web_project.MemberBean" scope = "page"> </jsp:useBean>
+<jsp:useBean id = "member" class = "com.web_project.member.MemberBean" scope = "page"> </jsp:useBean>
 <jsp:setProperty name = "member" property = "*"/>
+
+<%
+	MemberDAO memberDAO = new MemberDAO();
+	memberDAO.insertMember(member);
+%>
 
 <!DOCTYPE html>
 <html>
@@ -15,52 +22,45 @@
 <title>회원가입 페이지</title>
 </head>
 <body>
+
+<h2>회원가입이 성공.</h2>
 <table>
-		<tr>
-		<td> 아이디 </td>
-		<td> <jsp:getProperty property="userid" name="member"/> </td>
-		</tr>
-		
-		<tr>
-		<td> 비밀번호 </td>
-		<td> <jsp:getProperty property="passwd" name="member"/> </td>
-		</tr>
-		
-		<tr>
-		<td> 이름 </td>
-		<td> <jsp:getProperty property ="usrname" name="member"/> </td>
-		</tr>
-		
-		<tr>
-		<td> 성별 </td>
-		<td> <jsp:getProperty property ="gender" name="member"/> </td>
-		</tr>
-		
-		<tr>
-		<td> 생일(월) </td>
-		<td> <jsp:getProperty property="birthday_month" name="member"/> </td>
-		</tr>
-		<tr>
-		<td> 생일(일) </td>
-		<td> <jsp:getProperty property="birthday_day" name="member"/> </td>
-		</tr>
-		
-		<tr>
+
+	<tr>
 		<td> 학번 </td>
-		<td> <jsp:getProperty property="stdnum" name="member"/> </td>
-		</tr>
-		
-		<tr>
+		<td> <%= member.getStdnum() %> </td>
+	</tr>
+
+	<tr>
+		<td> 비밀번호 </td>
+		<td> <%= member.getPasswd() %> </td>
+	</tr>
+
+	<tr>
+		<td> 이름 </td>
+		<td> <%= member.getUsrname() %> </td>
+	</tr>
+
+	<tr>
+		<td> 성별 </td>
+		<td> <%= member.getGender() %> </td>
+	</tr>
+
+	<tr>
+		<td> 생일 </td>
+		<td> <%= member.getBirthday() %> </td>
+	</tr>
+
+	<tr>
 		<td> 나이 </td>
-		<td> <jsp:getProperty property="age" name="member"/> </td>
-		</tr>
-		
-		<tr>
+		<td> <%= member.getAge() %> </td>
+	</tr>
+
+	<tr>
 		<td> 등록일 </td>
-		<td> <jsp:getProperty property="reg_date" name="member"/> </td>
-		</tr>
-		
-		
-	</table>
+		<td> <%= member.getReg_date() %> </td>
+	</tr>
+</table>
+db 입력 완료
 </body>
 </html>
