@@ -1,23 +1,14 @@
-package com.web_project;
-
-import java.util.Date;
+package com.web_project.member;
 
 public class MemberBean {
-	private String userid;
+	private int stdnum;
 	private String passwd;
 	private String usrname;
 	private String gender;
 	private String birthday;
-	private int stdnum;
 	private int age;
 	private String reg_date;
 	
-	public String getUserid() {
-		return userid;
-	}
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
 	public String getPasswd() {
 		return passwd;
 	}
@@ -63,17 +54,10 @@ public class MemberBean {
 	}
 	@Override
 	public String toString() {
-		return "MemberBean [userid=" + userid + ", passwd=" + passwd + ", usrname=" + usrname + ", gender=" + gender
-				+ ", birthday=" + birthday + ", stdnum=" + stdnum + ", age=" + age + ", reg_date=" + reg_date + "]";
+		return "MemberBean [stdnum=" + stdnum + ", passwd=" + passwd + ", usrname=" + usrname + ", gender=" + gender
+				+ ", birthday=" + birthday + ", age=" + age + ", reg_date=" + reg_date + "]";
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-
 	
 }
