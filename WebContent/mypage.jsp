@@ -62,5 +62,7 @@
 %>
         </tbody>
     </table>
+    
+    <a href="/InternetDB-Project/member_manage/updateMemberform.jsp">회원 정보 수정</a>
 </body>
 </html>
