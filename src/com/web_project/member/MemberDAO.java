@@ -133,5 +133,46 @@ public class MemberDAO {
         }
         return -2;
     }
+    
+    public MemberBean getMemberByStdnum(int stdnum) {
+        PreparedStatement select = null;
+        ResultSet resultSet = null;
+        MemberBean member = null;
+
+        try {
+            String sql_select = "SELECT * FROM member WHERE stdnum = ?";
+            select = connection.prepareStatement(sql_select);
+            select.setInt(1, stdnum);
+
+            resultSet = select.executeQuery();
+
+            if (resultSet.next()) {
+                member = new MemberBean();
+                member.setStdnum(resultSet.getInt("stdnum"));
+                member.setPasswd(resultSet.getString("passwd"));
+                member.setUsrname(resultSet.getString("usrname"));
+                member.setGender(resultSet.getString("gender"));
+                member.setBirthday(resultSet.getString("birthday"));
+                member.setAge(resultSet.getInt("age"));
+                member.setReg_date(resultSet.getString("reg_date"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (select != null) {
+                    select.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return member;
+    }
+
 
 }
