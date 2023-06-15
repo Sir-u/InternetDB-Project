@@ -1,51 +1,174 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>비밀번호 입력 예제</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-  <!-- Custom CSS -->
-  <style>
-    .modal-dialog-centered {
-      display: flex;
-      align-items: center;
-      min-height: calc(100% - (.5rem * 2));
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
 </head>
+
 <body>
-  <button id="passwordButton" class="btn btn-primary">비밀번호 입력</button>
 
-<!-- 모달 창 -->
-<div class="modal" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="passwordModalLabel">비밀번호 입력</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <script>
+        function validateInput() {
+          var studentNumber = document.getElementById('studentNumber');
+          var studentPassword = document.getElementById('studentPassword');
+          var studentName = document.getElementById('studentName');
+          var gender = document.querySelector('select[name="gender"]');
+          var datepicker = document.getElementById('datepicker');
+          var studentAge = document.getElementById('studentAge');
+          var reg_date = document.getElementById('reg_date');
+          var invalidFeedback1 = document.getElementById('invalidFeedback1');
+          var invalidFeedback2 = document.getElementById('invalidFeedback2');
+          var invalidFeedback3 = document.getElementById('invalidFeedback3');
+          var invalidFeedback4 = document.getElementById('invalidFeedback4');
+          var invalidFeedback5 = document.getElementById('invalidFeedback5');
+          var invalidFeedback6 = document.getElementById('invalidFeedback6');
+          var invalidFeedback7 = document.getElementById('invalidFeedback7');
+          
+          if (studentNumber.value === '') {
+            invalidFeedback1.style.display = 'block';
+          } else {
+            invalidFeedback1.style.display = 'none';
+          }
+          
+          if (studentPassword.value === '') {
+            invalidFeedback2.style.display = 'block';
+          } else {
+            invalidFeedback2.style.display = 'none';
+          }
+          
+          if (studentName.value === '') {
+            invalidFeedback3.style.display = 'block';
+          } else {
+            invalidFeedback3.style.display = 'none';
+          }
+          
+          if (gender.value === '') {
+            invalidFeedback4.style.display = 'block';
+          } else {
+            invalidFeedback4.style.display = 'none';
+          }
+          
+          if (datepicker.value === '') {
+            invalidFeedback5.style.display = 'block';
+          } else {
+            invalidFeedback5.style.display = 'none';
+          }
+          
+          if (studentAge.value === '') {
+            invalidFeedback6.style.display = 'block';
+          } else {
+            invalidFeedback6.style.display = 'none';
+          }
+          
+          if (reg_date.value === '') {
+            invalidFeedback7.style.display = 'block';
+          } else {
+            invalidFeedback7.style.display = 'none';
+          }
+        }
+        </script>
+
+
+
+    <header>
+        <h1 style="font-size: 36px;">동아리명</h1>
+        <div>
+
+
+            <a href="/InternetDB-Project/member_manage/logout.jsp" class="btn btn-warning">로그아웃</a>
+
+            <a href="/InternetDB-Project/member_manage/removeMemberform.jsp" class="btn btn-warning">회원탈퇴</a>
         </div>
-        <div class="modal-body">
-          <!-- 폼 추가 -->
-          <form name="deleteform" method="post" action="delete_ok.jsp">
-            <div class="mb-3">
-              <label for="passwordInput" class="form-label">비밀번호:</label>
-              <input type="password" class="form-control" id="passwordInput" name="password">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/InternetDB-Project/home.jsp">홈</a></li>
+            <li><a href="#">소개</a></li>
+            <li><a href="/InternetDB-Project/board/boardlist.jsp">게시판</a></li>
+            <li><a href="#">자료실</a></li>
+            <li><a href="/InternetDB-Project/mypage.jsp">마이페이지</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2 class="link-offset-2" style="color: #555;">회원정보 수정</h2>
+        <div class="p-3 m-0 border-0 bd-example m-0 border-0" ; justify-content="center" ;>
+            <div class="col-sm-4" style="margin: auto;">
+                <div class="card p-3">
+                    <div class="card-body h-100">
+                        <form action="updateMember.jsp" method="post">
+                            <h1 class="h3 mb-3 fw-normal">수정할 정보를 입력해주세요</h1>
+                            <div class="form-floating">
+                                <input type="number" class="form-control" name="stdnum" id="studentNumber"
+                                    placeholder="123456789" value="<%= member.getStdnum() %>" required>
+                                <label for="studentNumber">학번</label>
+                                <div class="invalid-feedback" id="invalidFeedback1">Please choose a username.</div>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" name="passwd" id="studentPassword"
+                                    placeholder="비밀번호" required>
+                                <label for="studentPassword">비밀번호</label>
+                                <div class="invalid-feedback" id="invalidFeedback2">Please choose a password.</div>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="usrname" id="studentName" placeholder="이름"
+                                    value="<%= member.getUsrname() %>" required>
+                                <label for="studentName">이름</label>
+                                <div class="invalid-feedback" id="invalidFeedback3">Please enter your name.</div>
+                            </div>
+                            <div class="form-floating">
+                                <select class="form-select" name="gender" required>
+                                    <option value="">성별 선택</option>
+                                    <option value="male">남성</option>
+                                    <option value="female">여성</option>
+                                </select>
+                                <label for="gender">성별</label>
+                                <div class="invalid-feedback" id="invalidFeedback4">Please select your gender.</div>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="datepicker" name="birthday" placeholder="생일"
+                                    value="<%= member.getBirthday() %>" required>
+                                <label for="datepicker">생일</label>
+                                <div class="invalid-feedback" id="invalidFeedback5">Please enter your birthday.</div>
+                            </div>
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="studentAge" name="age" placeholder="나이"
+                                    value="<%= member.getAge() %>" required>
+                                <label for="studentAge">나이</label>
+                                <div class="invalid-feedback" id="invalidFeedback6">Please enter your age.</div>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="reg_date" name="reg_date" placeholder="등록일"
+                                    readonly value="<%= member.getReg_date() %>" required>
+                                <label for="reg_date">등록일</label>
+                                <div class="invalid-feedback" id="invalidFeedback7">Please enter the registration date.
+                                </div>
+                            </div>
+                            <div class="form-check text-start my-3"></div>
+                            <input type="hidden" name="authority_level" value="0">
+
+                            <button class="btn bd-cyan-400 w-100 py-2" type="submit"
+                                onclick="validateInput()">수정하기</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <!-- 기타 입력 필드 추가 -->
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-          <button type="button" class="btn btn-primary" id="submitButton">확인</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom JS -->
-  <script src="password.js"></script>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 동아리명. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>
