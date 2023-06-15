@@ -142,10 +142,26 @@
          transform: translateY(1px);
       }
 
+      @media (max-width: 768px) {
+         .table-container {
+            margin-left: 10px;
+            margin-right: 10px;
+         }
+      }
 
-      /* tr, th {
-         display: flex;
-      } */
+      @media (min-width: 769px) and (max-width: 1200px) {
+         .table-container {
+            margin-left: 100px;
+            margin-right: 100px;
+         }
+      }
+
+      @media (min-width: 1201px) {
+         .table-container {
+            margin-left: 300px;
+            margin-right: 300px;
+         }
+      }
    </style>
 </head>
 
@@ -166,55 +182,57 @@
    <main>
       <h2 class="link-offset-2" ; style="color: #555;">게시판</h2>
       <p class="m-2" style="justify-content: left;">총 5개</p>
-      <div class="table-responsive m-2">
-         <table class="table table-striped">
-            <thead>
-               <tr>
-                  <th scope="col">번호</th>
-                  <th scope="col">제목</th>
-                  <th scope="col">작성자</th>
-                  <th scope="col">작성일</th>
-                  <th scope="col">조회수</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr style="cursor: pointer;" onclick="window.location.href='billboardContent.html';">
-                  <th scope="row">1</th>
-                  <td>게시글 제목 1</td>
-                  <td>작성자 1</td>
-                  <td>2023-05-19</td>
-                  <td>0</td>
-               </tr>
-               <tr style="cursor: pointer;" onclick="window.location.href='billboardContent.html';">
-                  <th scope="row">2</th>
-                  <td>게시글 제목 2</td>
-                  <td>작성자 2</td>
-                  <td>2023-05-20</td>
-                  <td>0</td>
-               </tr>
-               <tr style="cursor: pointer;" onclick="window.location.href='billboardContent.html';">
-                  <th scope="row">3</th>
-                  <td>게시글 제목 3</td>
-                  <td>작성자 3</td>
-                  <td>2023-05-21</td>
-                  <td>0</td>
-               </tr>
-               <tr style="cursor: pointer;" onclick="window.location.href='billboardContent.html';">
-                  <th scope="row">4</th>
-                  <td>게시글 제목 4</td>
-                  <td>작성자 4</td>
-                  <td>2023-05-22</td>
-                  <td>0</td>
-               </tr>
-               <tr style="cursor: pointer;" onclick="window.location.href='billboardContent.html';">
-                  <th scope="row">5</th>
-                  <td>게시글 제목 5</td>
-                  <td>작성자 5</td>
-                  <td>2023-05-23</td>
-                  <td>0</td>
-               </tr>
-            </tbody>
-         </table>
+      <div class="table-container">
+         <div class="table-responsive m-2">
+            <table class="table table-striped">
+               <thead>
+                  <tr>
+                     <th scope="col">번호</th>
+                     <th scope="col">제목</th>
+                     <th scope="col">작성자</th>
+                     <th scope="col">작성일</th>
+                     <th scope="col">조회수</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr style="cursor: pointer;" onclick="window.location.href='billboardContent.html';">
+                     <th scope="row">1</th>
+                     <td>게시글 제목 1</td>
+                     <td>작성자 1</td>
+                     <td>2023-05-19</td>
+                     <td>0</td>
+                  </tr>
+                  <tr style="cursor: pointer;" onclick="window.location.href='billboardContent.html';">
+                     <th scope="row">2</th>
+                     <td>게시글 제목 2</td>
+                     <td>작성자 2</td>
+                     <td>2023-05-20</td>
+                     <td>0</td>
+                  </tr>
+                  <tr style="cursor: pointer;" onclick="window.location.href='billboardContent.html';">
+                     <th scope="row">3</th>
+                     <td>게시글 제목 3</td>
+                     <td>작성자 3</td>
+                     <td>2023-05-21</td>
+                     <td>0</td>
+                  </tr>
+                  <tr style="cursor: pointer;" onclick="window.location.href='billboardContent.html';">
+                     <th scope="row">4</th>
+                     <td>게시글 제목 4</td>
+                     <td>작성자 4</td>
+                     <td>2023-05-22</td>
+                     <td>0</td>
+                  </tr>
+                  <tr style="cursor: pointer;" onclick="window.location.href='billboardContent.html';">
+                     <th scope="row">5</th>
+                     <td>게시글 제목 5</td>
+                     <td>작성자 5</td>
+                     <td>2023-05-23</td>
+                     <td>0</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
       </div>
       <div class="container">
          <form action="" class="search-bar">
