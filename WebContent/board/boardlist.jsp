@@ -35,7 +35,7 @@
          <li><a href="#">소개</a></li>
          <li><a href="/InternetDB-Project/board/boardlist.jsp" style="font-weight: bold;">게시판</a></li>
          <li><a href="#">자료실</a></li>
-         <li><a href="#">마이페이지</a></li>
+         <li><a href="/InternetDB-Project/mypage.jsp">마이페이지</a></li>
       </ul>
    </nav>
    <main>

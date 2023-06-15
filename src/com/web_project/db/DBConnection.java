@@ -1,20 +1,18 @@
 package com.web_project.db;
 
+import com.web_project.db_env.DBenv;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private static Connection connection;
-    private static final String driver = "oracle.jdbc.driver.OracleDriver";
-    private static final String url = "jdbc:oracle:thin:@localhost:1521";
-    private static final String user = "internetdb";
-    private static final String password = "1234";
+	private static Connection connection;
 
     private DBConnection() {
         try {
-            Class.forName(driver);
-            connection = DriverManager.getConnection(url, user, password);
+            Class.forName(DBenv.driver);
+            connection = DriverManager.getConnection(DBenv.url, DBenv.user, DBenv.password);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

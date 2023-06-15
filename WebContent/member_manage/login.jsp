@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@ page import="com.web_project.member.LoginBean" %>
+<%@ page import="com.web_project.member.MemberBean" %>
 <%@ page import="com.web_project.member.MemberDAO" %>
 
 <jsp:useBean id="login" class="com.web_project.member.LoginBean" scope="page" />
@@ -21,6 +22,10 @@
     if (isAuthenticated == 1) {
     	session.setAttribute("isLoggedIn", true);
         session.setAttribute("id", login.getStdnum());
+        MemberBean member = memberDAO.getMemberByStdnum(login.getStdnum());
+        session.setAttribute("usrname", member.getUsrname());
+        System.out.println(member.getAuthority_level());
+        session.setAttribute("authority_level", member.getAuthority_level());
 
         response.sendRedirect("/InternetDB-Project/home.jsp"); // 홈으로 리다이렉트
     } else {

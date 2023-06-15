@@ -59,7 +59,7 @@
             <li><a href="#">소개</a></li>
             <li><a href="/InternetDB-Project/board/boardlist.jsp">게시판</a></li>
             <li><a href="#">자료실</a></li>
-            <li><a href="#">마이페이지</a></li>
+            <li><a href="/InternetDB-Project/mypage.jsp">마이페이지</a></li>
         </ul>
     </nav>
       <section>
@@ -104,7 +104,8 @@
                         </div>
                         <div class="form-check text-start my-3">
                         </div>
-
+                        <input type="hidden" name="authority_level" value="0">
+	
                         <button class="btn bd-cyan-400 w-100 py-2" type="submit">가입하기</button>
                         </form>
                   </div>
@@ -113,7 +114,7 @@
 
          </div>
       </section>
-   </main>
+   
    <footer>
       <p>&copy; 2023 동아리명. All rights reserved.</p>
    </footer>

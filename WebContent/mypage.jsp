@@ -6,8 +6,37 @@
 <head>
 <meta charset="UTF-8">
 <title>Member Information</title>
+	<link rel="stylesheet" href="/InternetDB-Project/style/style.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
 </head>
 <body>
+	<header>
+    <h1 style="font-size: 36px;">동아리명</h1>
+    <div>
+        <% if (session.getAttribute("isLoggedIn") != null) {
+            String usrname = (String) session.getAttribute("usrname");
+        %>
+            <%= usrname %> 님, 안녕하세요!
+            <a href="/InternetDB-Project/member_manage/logout.jsp" class="btn btn-warning">로그아웃</a>
+            
+            <a href="/InternetDB-Project/member_manage/removeMemberform.jsp" class="btn btn-warning">회원탈퇴</a>
+        <% } else { %>
+            <a href="/InternetDB-Project/member_manage/loginform.jsp" class="btn btn-warning">로그인</a>
+            
+            <a href="/InternetDB-Project/member_manage/addMemberform.jsp" class="btn btn-warning">회원가입</a>
+        <% } %>
+    </div>
+	</header>
+	<nav>
+        <ul>
+            <li><a href="/InternetDB-Project/home.jsp">홈</a></li>
+            <li><a href="#">소개</a></li>
+            <li><a href="/InternetDB-Project/board/boardlist.jsp">게시판</a></li>
+            <li><a href="#">자료실</a></li>
+            <li><a href="/InternetDB-Project/mypage.jsp" style="font-weight: bold;">마이페이지</a></li>
+        </ul>
+    </nav>
 <% 
     Integer stdnum = (Integer) session.getAttribute("id");
     if (stdnum != null) {

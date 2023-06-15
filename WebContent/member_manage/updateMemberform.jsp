@@ -105,6 +105,7 @@
                         </div>
                         <div class="form-check text-start my-3">
                         </div>
+                        <input type="hidden" name="authority_level" value="0">
 
                         <button class="btn bd-cyan-400 w-100 py-2" type="submit">수정하기</button>
                         </form>

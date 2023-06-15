@@ -15,9 +15,9 @@
     <h1 style="font-size: 36px;">동아리명</h1>
     <div>
         <% if (session.getAttribute("isLoggedIn") != null) {
-            Integer id = (Integer) session.getAttribute("id");
+            String usrname = (String) session.getAttribute("usrname");
         %>
-            <%= id %> 님, 안녕하세요!
+            <%= usrname %> 님, 안녕하세요!
             <a href="/InternetDB-Project/member_manage/logout.jsp" class="btn btn-warning">로그아웃</a>
             
             <a href="/InternetDB-Project/member_manage/removeMemberform.jsp" class="btn btn-warning">회원탈퇴</a>
@@ -37,6 +37,17 @@
             <li><a href="/InternetDB-Project/board/boardlist.jsp">게시판</a></li>
             <li><a href="#">자료실</a></li>
             <li><a href="/InternetDB-Project/mypage.jsp">마이페이지</a></li>
+            <%  if (session.getAttribute("authority_level") != null) {
+	                int authorityLevel = (int) session.getAttribute("authority_level");
+	                if (authorityLevel >= 1) {
+            %>
+            <li>
+                <a href="/InternetDB-Project/member_manage/memberlist.jsp">회원관리</a>
+            </li>
+            <%
+                	}
+            	}
+            %>
         </ul>
     </nav>
 
@@ -89,29 +100,3 @@
 
 </html>
 
-
-
-
-
-
-<%-- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Home</title>
-</head>
-<body>
-    <% if (session.getAttribute("isLoggedIn") != null) {
-    	Integer id = (Integer) session.getAttribute("id");
-    %>
-        <h1><%= id %> 님, 안녕하세요!</h1>
-        <a href="member_manage/logout.jsp">로그아웃</a>
-        <a href="member_manage/removeMemberform.jsp">회원탈퇴</a>
-    <% } else { %>
-        <h1>홈 페이지</h1>
-        <a href="member_manage/loginform.jsp">로그인</a>
-        <a href="member_manage/addMemberform.jsp">회원가입</a>
-    <% } %>
-
-</body>
-</html> --%>

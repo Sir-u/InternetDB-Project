@@ -8,6 +8,7 @@ public class MemberBean {
 	private String birthday;
 	private int age;
 	private String reg_date;
+	private int authority_level;
 	
 	public String getPasswd() {
 		return passwd;
@@ -52,11 +53,19 @@ public class MemberBean {
 	public void setReg_date(String reg_date) {
 		this.reg_date = reg_date;
 	}
+	public int getAuthority_level() {
+		return authority_level;
+	}
+	public void setAuthority_level(int authority_level) {
+		this.authority_level = authority_level;
+	}
 	@Override
 	public String toString() {
 		return "MemberBean [stdnum=" + stdnum + ", passwd=" + passwd + ", usrname=" + usrname + ", gender=" + gender
-				+ ", birthday=" + birthday + ", age=" + age + ", reg_date=" + reg_date + "]";
+				+ ", birthday=" + birthday + ", age=" + age + ", reg_date=" + reg_date + ", authority_level="
+				+ authority_level + "]";
 	}
+	
 	
 	
 	
