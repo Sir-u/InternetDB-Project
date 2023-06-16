@@ -183,12 +183,13 @@
                   <div class="mb-3">
                      <label for="passwordInput" class="form-label">비밀번호:</label>
                      <input type="password" class="form-control" id="passwordInput" name="password">
+                     <div class="invalid-feedback" id="passwordInputFeedback">비밀번호를 적어주세요.</div>
                   </div>
                   <!-- 기타 입력 필드 추가 -->
                </form>
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-primary" id="submitButton">확인</button>
+               <button type="button" class="btn btn-primary" id="submitButton" onclick="writePasswardCheck();">확인</button>
             </div>
          </div>
       </div>
@@ -210,13 +211,15 @@
                         <tr>
                            <td id="replyName" class="table-info" align="center" width="76">이름</td>
                            <td width="319">
-                              <input name="name" size="40" maxlength="50">
+                              <input class="form-control" name="name" size="40" maxlength="50" id="studentName" required>
+                              <div class="invalid-feedback" id="invalidFeedback1">이름을 적어주세요.</div>
                            </td>
                         </tr>
                         <tr>
                            <td id="replyText" class="table-info" align="center" width="76">내용</td>
                            <td width="319">
-                              <textarea name="memo" id="memo" cols="60" rows="13"></textarea>
+                              <textarea class="form-control" name="memo" id="content" cols="60" rows="13"></textarea>
+                              <div class="invalid-feedback" id="invalidFeedback2">내용을 적어주세요.</div>
                            </td>
                         </tr>
                      </table>
@@ -225,9 +228,11 @@
                </form>
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-outline-success" id="saveButton" onclick="writeReplyCheck();">등록</button>
+               <button type="button" class="btn btn-outline-success" id="saveButton"
+                  onclick="writeReplyCheck();">등록</button>
                <!-- <input type="button" value="등록" class="btn btn-outline-success" id="saveButton" onclick="writeReplyCheck();"> -->
-               <input type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" id="cancelButton" aria-label="Close" value="취소">
+               <input type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" id="cancelButton"
+                  aria-label="Close" value="취소">
             </div>
          </div>
       </div>

@@ -186,12 +186,13 @@
                <div class="mb-3">
                   <label for="passwordInput" class="form-label">비밀번호:</label>
                   <input type="password" class="form-control" id="passwordInput" name="password">
+                  <div class="invalid-feedback" id="passwordInputFeedback">비밀번호를 적어주세요.</div>
                </div>
                <!-- 기타 입력 필드 추가 -->
                <!-- </form> -->
             </div>
             <div class="modal-footer">
-               <button type="button" class="btn btn-primary" id="submitButton">확인</button>
+               <button type="button" class="btn btn-primary" id="submitButton" onclick="writePasswardCheck();">확인</button>
             </div>
          </div>
       </div>

@@ -108,13 +108,15 @@
                            <tr>
                               <td class="table-info" align="center" width="76">이름</td>
                               <td width="319">
-                                 <input name="name" size="40" maxlength="50">
+                                 <input name="name" size="40" maxlength="50" id="studentName" required>
+                                 <div class="invalid-feedback" id="invalidFeedback1">이름을 적어주세요.</div>
                               </td>
                            </tr>
                            <tr>
                               <td class="table-info" align="center" width="76">내용</td>
                               <td width="319">
-                                 <textarea name="memo" id="memo" cols="60" rows="13"></textarea>
+                                 <textarea name="memo" id="content" cols="60" rows="13"></textarea>
+                                 <div class="invalid-feedback" id="invalidFeedback2">내용을 적어주세요.</div>
                               </td>
                            </tr>
 

@@ -14,25 +14,7 @@
 </head>
 
 <body>
-   <script>
-      function validateInput() {
-         var inputs = ['studentNumber', 'studentPassword', 'studentName', 'gender', 'datepicker', 'studentAge', 'reg_date'];
-         var invalidFeedbacks = ['invalidFeedback1', 'invalidFeedback2', 'invalidFeedback3', 'invalidFeedback4', 'invalidFeedback5', 'invalidFeedback6', 'invalidFeedback7'];
-
-         for (var i = 0; i < inputs.length; i++) {
-            var input = document.getElementById(inputs[i]);
-            var invalidFeedback = document.getElementById(invalidFeedbacks[i]);
-
-            if (input.value === '') {
-               invalidFeedback.style.display = 'block';
-            } else {
-               invalidFeedback.style.display = 'none';
-            }
-         }
-      }
-
-   </script>
-
+   <script src="inputCheck.js"></script>
    <header>
       <h1 style="font-size: 36px;">동아리명</h1>
       <div>

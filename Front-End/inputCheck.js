@@ -1,48 +1,75 @@
 function writeCheck() {
-   var form = document.writeform;
+   var inputs = ['title', 'studentName', 'studentPassward', 'memo'];
+   var invalidFeedbacks = ['invalidFeedback1', 'invalidFeedback2', 'invalidFeedback3', 'invalidFeedback4'];
 
+   for (var i = 0; i < inputs.length; i++) {
+      var input = document.getElementById(inputs[i]);
+      var invalidFeedback = document.getElementById(invalidFeedbacks[i]);
 
-   if (!form.title.value) {
-      alert("제목을 적어주세요");
-      form.title.focus();
-      return;
-   }
-
-   if (!form.name.value) {
-      alert("이름을 적어주세요");
-      form.name.focus();
-      return;
-   }
-
-   if (!form.password.value) {
-      alert("비밀번호를 적어주세요");
-      form.password.focus();
-      return;
-   }
-   
-   if (!form.memo.value) {
-      alert("내용을 적어주세요");
-      form.memo.focus();
-      return;
+      if (input.value === '') {
+         input.classList.add('is-invalid');
+         invalidFeedback.style.display = 'block';
+      } else {
+         input.classList.remove('is-invalid');
+         invalidFeedback.style.display = 'none';
+      }
    }
 
    form.submit();
 }
 
 function writeReplyCheck() {
-   var form = document.writeform;
+   var rep_inputs = ['studentName', 'content'];
+   var invalidFeedbacks = ['invalidFeedback1', 'invalidFeedback2'];
 
-   if (!form.name.value) {
-      alert("이름을 적어주세요");
-      form.name.focus();
-      return;
-   }
+   for (var i = 0; i < rep_inputs.length; i++) {
+      var input = document.getElementById(rep_inputs[i]);
+      var invalidFeedback = document.getElementById(invalidFeedbacks[i]);
 
-   if (!form.memo.value) {
-      alert("내용을 적어주세요");
-      form.memo.focus();
-      return;
+      if (input.value === '') {
+         input.classList.add('is-invalid');
+         invalidFeedback.style.display = 'block';
+      } else {
+         input.classList.remove('is-invalid');
+         invalidFeedback.style.display = 'none';
+      }
    }
 
    form.submit();
+}
+
+function validateInput() {
+   var inputs = ['studentNumber', 'studentPassword', 'studentName', 'gender', 'datepicker', 'studentAge', 'reg_date'];
+   var invalidFeedbacks = ['invalidFeedback1', 'invalidFeedback2', 'invalidFeedback3', 'invalidFeedback4', 'invalidFeedback5', 'invalidFeedback6', 'invalidFeedback7'];
+
+   for (var i = 0; i < inputs.length; i++) {
+      var input = document.getElementById(inputs[i]);
+      var invalidFeedback = document.getElementById(invalidFeedbacks[i]);
+
+      if (input.value === '') {
+         input.classList.add('is-invalid');
+         invalidFeedback.style.display = 'block';
+      } else {
+         input.classList.remove('is-invalid');
+         invalidFeedback.style.display = 'none';
+      }
+   }
+}
+
+function writePasswardCheck() {
+   
+
+   
+      var input = document.getElementById("passwordInput");
+      var invalidFeedback = document.getElementById("passwordInputFeedback");
+
+      if (input.value === '') {
+         input.classList.add('is-invalid');
+         invalidFeedback.style.display = 'block';
+
+      } else {
+         input.classList.remove('is-invalid');
+         invalidFeedback.style.display = 'none';
+      }
+   
 }
