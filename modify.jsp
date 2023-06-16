@@ -128,12 +128,17 @@
             out.println(e.toString());
         }
     %>
+     <main>
+      <h2 class="link-offset-2" style="color: #555;">게시판 글 수정하기</h2>
+      <div class="table-container">
+         <div class="table-responsive m-2">
+            <table class="table table-secondary">
 			<form name="modifyform" method="post" action="modify_ok.jsp?idx=<%=idx%>">
                   <tr>
                      <td>
                         <table class="table table-bordered">
                            <tr style="text-align:center;">
-                              <td class="table-primary">글쓰기</td>
+                              <td class="table-primary">글 수정하기</td>
                            </tr>
                         </table>
                         <table class="table table-bordered">

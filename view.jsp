@@ -210,8 +210,6 @@ try {
    <script src="password.js"></script>
    <script src="reply.js"></script>
    <script src="inputCheck.js"></script>
-   	<script>
-		console.log(password);
-	</script>
+   	
 </body>
 </html>
