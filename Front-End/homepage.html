@@ -77,9 +77,30 @@
                 <div class="card card-table m-2">
                     <h2 class="card-header" style="color: #555;">공지사항</h2>
                     <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item"><a href="#">여기에 공지사항 최신글 3개 뽑아내어서 들어가야할듯 li 태그 복사되도록 ㄱㄱ</a></li>
-                        </ul>
+                        <table class="table table-hover">
+                            <tbody>
+                                공지사항 최신글 3개 뽑아내어서 들어가야할듯 tr태그 복사되도록 ㄱㄱ
+
+                                <tr style="cursor: pointer; text-align: center;"
+                                    onclick="window.location.href='view.jsp?idx=<%=idx%>';">
+                                    <th scope="row" hidden>
+                                        <%=idx%>
+                                    </th>
+                                    <td style="width: 400%;">
+                                        <%=title%>
+                                    </td>
+                                    <td>
+                                        <%=name%>
+                                    </td>
+                                    <td>
+                                        <%=time%>
+                                    </td>
+                                    <td>
+                                        <%=hit%>
+                                    </td>
+                                </tr>
+                            </tbody>
+                    </table>
                     </div>
                 </div>
             </div>
@@ -88,8 +109,31 @@
                 <div class="card card-table m-2">
                     <h2 class="card-header" style="color: #555;">게시판</h2>
                     <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item"><a href="#">여기에 게시판 최신글 3개 뽑아내어서 들어가야할듯 li 태그 복사되도록 ㄱㄱ</a></li>
+                        
+                            <table class="table table-hover">
+                                    <tbody>
+                                        여기에 게시판 최신글 3개 뽑아내어서 들어가야할듯 tr태그 복사되도록 ㄱㄱ
+
+                                        <tr style="cursor: pointer; text-align: center;"
+                                            onclick="window.location.href='view.jsp?idx=<%=idx%>';">
+                                            <th scope="row" hidden>
+                                                <%=idx%>
+                                            </th>
+                                            <td style="width: 400%;">
+                                                <%=title%>
+                                            </td>
+                                            <td>
+                                                <%=name%>
+                                            </td>
+                                            <td>
+                                                <%=time%>
+                                            </td>
+                                            <td>
+                                                <%=hit%>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                            </table>
                     </div>
                 </div>
             </div>
