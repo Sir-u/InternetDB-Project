@@ -47,7 +47,7 @@ nav ul li {
     margin: 0 10px;
 }
 
-nav ul li a {
+nav a, main a {
     color: #333;
     text-decoration: none;
 }
@@ -56,23 +56,14 @@ main {
     padding: 20px;
 }
 
-section ul li {
-    margin-bottom: 20px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
 
-section ul li a {
-    color: #333;
-    text-decoration: none;
-}
-
-img {
+/* img {
     max-width: 100%;
     width: 1500px !important;
     height: auto !important;
     padding: 10px;
     position: relative;
-}
+} */
 
 footer {
     background-color: #333;
