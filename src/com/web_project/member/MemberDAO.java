@@ -16,23 +16,6 @@ public class MemberDAO {
     	connection = DBConnection.getConnection();
     }
     
-    // 비밀번호 해싱 메서드
-//    private String hashPassword(String password) {
-//        try {
-//            MessageDigest md = MessageDigest.getInstance("SHA-256");
-//            byte[] hashBytes = md.digest(password.getBytes());
-//            StringBuilder sb = new StringBuilder();
-//
-//            for (byte hashByte : hashBytes) {
-//                sb.append(Integer.toString((hashByte & 0xff) + 0x100, 16).substring(1));
-//            }
-//
-//            return sb.toString();
-//        } catch (NoSuchAlgorithmException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
     
     //회원가입 sql
     public void insertMember(MemberBean member) {
@@ -175,20 +158,22 @@ public class MemberDAO {
         return member;
     }
     
-    public boolean updateMember(MemberBean member) {
+    public boolean updateMember(MemberBean member, int stdnum) {
         PreparedStatement update = null;
         try {
-            String sql_update = "UPDATE member SET passwd=?, usrname=?, gender=?, birthday=?, age=?, reg_date=?, authority_level=? WHERE stdnum=?";
+            String sql_update = "UPDATE member SET stdnum=?, passwd=?, usrname=?, gender=?, birthday=?, age=?, reg_date=? WHERE stdnum=?";
             update = connection.prepareStatement(sql_update);
-
-            update.setString(1, PasswdGenerator.hashPassword(member.getPasswd())); // 비밀번호 해싱하여 저장
-            update.setString(2, member.getUsrname());
-            update.setString(3, member.getGender());
-            update.setString(4, member.getBirthday());
-            update.setInt(5, member.getAge());
-            update.setString(6, member.getReg_date());
-            update.setInt(7, member.getAuthority_level());
-            update.setInt(8, member.getStdnum());
+            
+            System.out.println(member.getStdnum());
+            update.setInt(1, member.getStdnum());
+            update.setString(2, PasswdGenerator.hashPassword(member.getPasswd())); // 비밀번호 해싱하여 저장
+            update.setString(3, member.getUsrname());
+            update.setString(4, member.getGender());
+            update.setString(5, member.getBirthday());
+            update.setInt(6, member.getAge());
+            update.setString(7, member.getReg_date());
+            System.out.println(stdnum);
+            update.setInt(8, stdnum);
 
             int rowsAffected = update.executeUpdate();
 

@@ -24,43 +24,10 @@
 <body>
 
 <h2>회원가입 성공.</h2>
-<table>
+<script>
+    alert("회원 가입이 성공적으로 이루어졌습니다.");
+    location.href = "/InternetDB-Project/home.jsp"; // 홈으로 이동
+</script>
 
-	<tr>
-		<td> 학번 </td>
-		<td> <%= member.getStdnum() %> </td>
-	</tr>
-
-	<tr>
-		<td> 비밀번호 </td>
-		<td> <%= member.getPasswd() %> </td>
-	</tr>
-
-	<tr>
-		<td> 이름 </td>
-		<td> <%= member.getUsrname() %> </td>
-	</tr>
-
-	<tr>
-		<td> 성별 </td>
-		<td> <%= member.getGender() %> </td>
-	</tr>
-
-	<tr>
-		<td> 생일 </td>
-		<td> <%= member.getBirthday() %> </td>
-	</tr>
-
-	<tr>
-		<td> 나이 </td>
-		<td> <%= member.getAge() %> </td>
-	</tr>
-
-	<tr>
-		<td> 등록일 </td>
-		<td> <%= member.getReg_date() %> </td>
-	</tr>
-</table>
-<a href="/InternetDB-Project/home.jsp">홈으로</a>
 </body>
 </html>

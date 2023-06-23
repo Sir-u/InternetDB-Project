@@ -12,6 +12,7 @@
 </head>
 <body>
     <% 
+    	Integer session_stdnum = (Integer) session.getAttribute("id");
         // Retrieve the form data
         int stdnum = Integer.parseInt(request.getParameter("stdnum"));
         String passwd = request.getParameter("passwd");
@@ -31,11 +32,10 @@
         member.setBirthday(birthday);
         member.setAge(age);
         member.setReg_date(reg_date);
-        member.setAuthority_level(authority_level);
 
         // Update the member in the database
         MemberDAO memberDAO = new MemberDAO();
-        boolean updated = memberDAO.updateMember(member);
+        boolean updated = memberDAO.updateMember(member, session_stdnum);
 
         if (updated) {
     %>

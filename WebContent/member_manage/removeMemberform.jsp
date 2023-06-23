@@ -2,31 +2,88 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>동아리명 - 회원가입</title>
+    <link rel="stylesheet" href="/InternetDB-Project/style/style.css" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
 </head>
+
 <body>
-<h2>정말로 회원탈퇴를 바라신다면 id 및 password를 입력해주세요</h2>
-<form action="removeMember.jsp" method = "post">
-	<table>
-		<tr>
-		<td> 학번 </td>
-		<td> <input type = "number" name = "stdnum" size = "20"> </td>
-		</tr>
-		
-		<tr>
-		<td> 비밀번호 </td>
-		<td> <input type = "password" name = "passwd" size = "20"> </td>
-		</tr>
-			
-		<tr>
-		<td> <input type = "submit" value = "회원탈퇴"> </td>
-		<td> <input type = "reset" value = "취소"> </td>
-		</tr>
-	</table>
-	
-</form>
-<a href="home.jsp">홈으로</a>
+    <header>
+    <h1 style="font-size: 36px;">동아리명</h1>
+    <div>
+        <% if (session.getAttribute("isLoggedIn") != null) {
+            Integer id = (Integer) session.getAttribute("id");
+        %>
+            <%= id %> 님, 안녕하세요!
+            <a href="/InternetDB-Project/member_manage/logout.jsp" class="btn btn-warning">로그아웃</a>
+            
+            <a href="/InternetDB-Project/member_manage/removeMemberform.jsp" class="btn btn-warning">회원탈퇴</a>
+        <% } else { %>
+            <a href="/InternetDB-Project/member_manage/loginform.jsp" class="btn btn-warning">로그인</a>
+            
+            <a href="/InternetDB-Project/member_manage/addMemberform.jsp" class="btn btn-warning">회원가입</a>
+        <% } %>
+    </div>
+	</header>
+
+    <nav>
+        <ul>
+            <li><a href="/InternetDB-Project/home.jsp">홈</a></li>
+            <li><a href="/InternetDB-Project/introduce.jsp">소개</a></li>
+            <li><a href="/InternetDB-Project/board/list.jsp">게시판</a></li>
+            <li><a href="/InternetDB-Project/announce/announcelist.jsp">공지사항</a></li>
+            <li><a href="/InternetDB-Project/mypage.jsp">마이페이지</a></li>
+            <%  if (session.getAttribute("authority_level") != null) {
+	                int authorityLevel = (int) session.getAttribute("authority_level");
+	                if (authorityLevel >= 1) {
+            %>
+            <li>
+                <a href="/InternetDB-Project/member_manage/memberlist.jsp">회원관리</a>
+            </li>
+            <%
+                	}
+            	}
+            %>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2 style="color: #555;">회원탈퇴</h2>
+            <div class="p-3 m-0 border-0 bd-example m-0 border-0" ; justify-content="center" ;>
+                <div class="col-sm-4" style="margin: auto;">
+                    <div class="card p-3">
+                        <div class="card-body h-100">
+                            	<form action="removeMember.jsp" method = "post">
+                                <h1 class="h3 mb-3 fw-normal">비밀번호 확인</h1>
+
+                                <div class="form-floating">
+                                    <input type="number" class="form-control" name = "stdnum" id="studentNumber" placeholder="123456789" value="<%= session.getAttribute("id") %>" readonly>
+                                    <label for="floatingInput">학번</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" name = "passwd" id="studentPassword" placeholder="비밀번호">
+                                    <label for="floatingPassword">비밀번호</label>
+                                </div>
+                                <div class="form-check text-start my-3">
+                                </div>
+
+                                <button class="btn bd-cyan-400 w-100 py-2" type="submit">회원탈퇴</button>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 동아리명. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>
+    

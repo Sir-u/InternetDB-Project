@@ -48,10 +48,21 @@
 	<nav>
         <ul>
             <li><a href="/InternetDB-Project/home.jsp">홈</a></li>
-            <li><a href="#">소개</a></li>
-            <li><a href="/InternetDB-Project/board/boardlist.jsp">게시판</a></li>
-            <li><a href="#">자료실</a></li>
+            <li><a href="/InternetDB-Project/introduce.jsp">소개</a></li>
+            <li><a href="/InternetDB-Project/board/list.jsp">게시판</a></li>
+            <li><a href="/InternetDB-Project/announce/announcelist.jsp">공지사항</a></li>
             <li><a href="/InternetDB-Project/mypage.jsp">마이페이지</a></li>
+            <%  if (session.getAttribute("authority_level") != null) {
+	                int authorityLevel = (int) session.getAttribute("authority_level");
+	                if (authorityLevel >= 1) {
+            %>
+            <li>
+                <a href="/InternetDB-Project/member_manage/memberlist.jsp">회원관리</a>
+            </li>
+            <%
+                	}
+            	}
+            %>
         </ul>
     </nav>
 <% 
@@ -86,8 +97,8 @@
                         </div>
                         <div class="form-floating">
                         	<select class = "form-control" name="gender">
-					            <option value="male">남성</option>
-					            <option value="female">여성</option>
+					            <option value="남성">남성</option>
+					            <option value="여성">여성</option>
 				        	</select>
 				        	<label for = "gender">성별</label>
                         </div>

@@ -66,21 +66,19 @@
         <% } %>
     </div>
 	</header>
-
-
-    <nav>
+	<nav>
         <ul>
             <li><a href="/InternetDB-Project/home.jsp">홈</a></li>
             <li><a href="/InternetDB-Project/introduce.jsp">소개</a></li>
             <li><a href="/InternetDB-Project/board/list.jsp">게시판</a></li>
             <li><a href="/InternetDB-Project/announce/announcelist.jsp">공지사항</a></li>
-            <li><a href="/InternetDB-Project/mypage.jsp" style="font-weight: bold;">마이페이지</a></li>
+            <li><a href="/InternetDB-Project/mypage.jsp">마이페이지</a></li>
             <%  if (session.getAttribute("authority_level") != null) {
 	                int authorityLevel = (int) session.getAttribute("authority_level");
 	                if (authorityLevel >= 1) {
             %>
             <li>
-                <a href="/InternetDB-Project/member_manage/memberlist.jsp">회원관리</a>
+                <a href="/InternetDB-Project/member_manage/memberlist.jsp" style="font-weight: bold;">회원관리</a>
             </li>
             <%
                 	}
@@ -90,12 +88,7 @@
     </nav>
 
 <main>
-<% 
-    Integer stdnum = (Integer) session.getAttribute("id");
-    if (stdnum != null) {
-        // 로그인된 상태
-%>
-      <h2 class="link-offset-2" style="color: #555;">마이페이지</h2>
+      <h2 class="link-offset-2" style="color: #555;">회원 상세정보</h2>
       <div class="table-container">
          <div class="table-responsive m-2">
             <table class="table table-secondary">
@@ -103,72 +96,91 @@
                   <td>
                      <table class="table table-bordered">
                         <tr style="text-align:center;">
-                           <td class="table-primary">내 개인정보 확인</td>
+                           <td class="table-primary">회원 개인정보</td>
                         </tr>
                      </table>
-			<%  
-                MemberDAO memberDAO = new MemberDAO();
-                MemberBean member = memberDAO.getMemberByStdnum(stdnum);
-				
-                //해당 멤버에 대한 정보가 DB에 있을 때
-                if (member != null) {
-            %>
-                     <table class="table table-bordered">
-                        <tr>
-                           <td class="table-info" align="center" width="50">학번</td>
-                           <td width="35">
-                              <%= member.getStdnum() %>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td class="table-info" align="center" width="50">이름</td>
-                           <td width="35">
-                              <%= member.getUsrname() %>
-                           </td>
-                        </tr>
-						<tr>
-                           <td class="table-info" align="center" width="50">성별</td>
-                           <td width="35">
-                              <%= member.getGender() %>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td class="table-info" align="center" width="50">생일</td>
-                           <td width="35">
-                              <%= member.getBirthday() %>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td class="table-info" align="center" width="50">나이</td>
-                           <td width="35">
-                              <%= member.getAge() %>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td class="table-info" align="center" width="50">가입일</td>
-                           <td width="35">
-                              <%= member.getReg_date() %>
-                           </td>
-                        </tr>
-                        <tr align="center">
-                           <td colspan="2" width="39">
-                              <input id="passwordButton" type="button" value="개인정보 수정하기" class="btn btn-outline-primary"
-                                 onclick="window.location='/InternetDB-Project/member_manage/updateMemberform.jsp'">
-                           </td>
-                        </tr>
-                     </table>
-            <%  //해당 멤버에 대한 정보가 DB에 없을 때(session인증을 하고 들어오는 것이기 때문에 앵간하면 있을 것이지만 예외처리로 넣었습니다.) 
-                } else {
-            %>
-            	<script>
-        			alert("다시 로그인 해주세요");
-        			location.href = "/InternetDB-Project/member_manage/logout.jsp"; // 홈 페이지로 이동
-   				</script>
-            <%  
-                }
-            %>
-            <% 
+                     <%
+                        String stdnumParam = request.getParameter("stdnum");
+                        if (stdnumParam != null) {
+                           int stdnum = Integer.parseInt(stdnumParam);
+                           MemberDAO memberDAO = new MemberDAO();
+                           MemberBean member = memberDAO.getMemberByStdnum(stdnum);
+                           if (member != null) {
+                     %>
+                           <table class="table table-bordered">
+                              <tr>
+                                 <td class="table-info" align="center" width="50">학번</td>
+                                 <td width="35">
+                                    <%= member.getStdnum() %>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td class="table-info" align="center" width="50">이름</td>
+                                 <td width="35">
+                                    <%= member.getUsrname() %>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td class="table-info" align="center" width="50">성별</td>
+                                 <td width="35">
+                                    <%= member.getGender() %>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td class="table-info" align="center" width="50">생일</td>
+                                 <td width="35">
+                                    <%= member.getBirthday() %>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td class="table-info" align="center" width="50">나이</td>
+                                 <td width="35">
+                                    <%= member.getAge() %>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td class="table-info" align="center" width="50">가입일</td>
+                                 <td width="35">
+                                    <%= member.getReg_date() %>
+                                 </td>
+                              </tr>
+                             <tr>
+							   <td class="table-info" align="center" width="50">권한 등급</td>
+							   <td width="35">
+							      <% 
+							         switch (member.getAuthority_level()) {
+							            case 1:
+							               out.println("관리자");
+							               break;
+							            case 0:
+							               out.println("일반사용자");
+							               break;
+							            default:
+							               out.println("알 수 없음");
+							               break;
+							         }
+							      %>
+							   </td>
+							</tr>
+                              
+                              <!-- Add more member details if needed -->
+                           </table>
+                     <%
+                           } else {
+                     %>
+                           <p>해당 학번의 회원 정보를 찾을 수 없습니다.</p>
+                     <%
+                           }
+                        } else {
+                     %>
+                           <p>학번 파라미터를 전달받지 못했습니다.</p>
+                     <%
+                        }
+                     %>
+                     
+                     <% 
 					      ManagerMemberDAO managermemberDAO = new ManagerMemberDAO();
+                     	  int stdnum = Integer.parseInt(stdnumParam);
                      	  System.out.println(stdnum);
 					      List<AnnounceBean> boardList = managermemberDAO.getBoardsByStdnum(stdnum);
 					      int total = boardList.size();
@@ -204,7 +216,7 @@
 					            String time = board.getTime().toString();
 					            int hit = board.getHit();
 					          %>
-					            <tr style="cursor: pointer; text-align: center;" onclick="window.location.href='/InternetDB-Project/board/view.jsp?idx=<%=idx%>';">
+					            <tr style="cursor: pointer; text-align: center;" onclick="window.location.href='announcedetail.jsp?idx=<%=idx%>';">
 					              <th scope="row"><%=idx%></th>
 					              <td><%=title%></td>
 					              <td><%=name%></td>
@@ -212,30 +224,17 @@
 					              <td><%=hit%></td>
 					            </tr>
 					          <% 
+					          		} 
 					          	} 
-					          } 
-					         %>
+					          %>
 					          </tbody>
 					      </table>
-            
-            		</td>
-            	</tr>
+                  </td>
+               </tr>
             </table>
          </div>
       </div>
-<%
-    }     
-    else {
-        // 로그인되지 않은 상태
-%>
-        <script>
-            alert("로그인이 필요합니다.");
-            location.href = "/InternetDB-Project/home.jsp"; // 홈 페이지로 이동
-        </script>
-<%
-    }
-%>
-</main>
+   </main>
 <footer>
       <p>&copy; 2023 동아리명. All rights reserved.</p>
 </footer>
